@@ -159,9 +159,6 @@ export default function FeedbackModal({ isOpen, onClose, clients }: FeedbackModa
                 Step {step} of 3: {getStepTitle()}
               </DialogDescription>
             </div>
-            <Button variant="ghost" size="sm" onClick={handleClose}>
-              <X className="h-4 w-4" />
-            </Button>
           </div>
         </DialogHeader>
 
@@ -250,7 +247,11 @@ export default function FeedbackModal({ isOpen, onClose, clients }: FeedbackModa
                     />
                     <Label
                       htmlFor={source.value}
-                      className="flex items-center space-x-3 p-3 border border-border rounded-lg hover:bg-accent cursor-pointer peer-checked:border-primary peer-checked:bg-primary/5 w-full"
+                      className={`flex items-center space-x-3 p-3 border rounded-lg cursor-pointer transition-colors w-full
+                        ${form.watch("source") === source.value 
+                          ? 'border-primary bg-primary/10' 
+                          : 'border-border hover:bg-accent'
+                        }`}
                     >
                       <span className="text-2xl">{source.icon}</span>
                       <div className="flex-1">
@@ -342,10 +343,7 @@ export default function FeedbackModal({ isOpen, onClose, clients }: FeedbackModa
                 </Button>
               )}
             </div>
-            <div className="flex gap-2">
-              <Button type="button" variant="outline" onClick={handleClose}>
-                Cancel
-              </Button>
+            <div>
               {step < 3 ? (
                 <Button type="button" onClick={handleNext}>
                   Next
