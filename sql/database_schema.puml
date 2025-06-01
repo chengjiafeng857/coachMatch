@@ -1,0 +1,137 @@
+@startuml Database Schema
+
+!define table(x) class x << (T,#FFAAAA) >>
+!define primary_key(x) <u>x</u>
+!define foreign_key(x) #x#
+
+' Styling
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+
+' Tables
+table(users) {
+    primary_key(id): VARCHAR
+    email: VARCHAR
+    first_name: VARCHAR
+    last_name: VARCHAR
+    profile_image_url: VARCHAR
+    role: VARCHAR
+    foreign_key(coach_id): VARCHAR
+    created_at: TIMESTAMP
+    updated_at: TIMESTAMP
+}
+
+table(coaches) {
+    primary_key(id): SERIAL
+    foreign_key(user_id): VARCHAR
+    business_name: VARCHAR
+    specializations: TEXT[]
+    years_experience: INTEGER
+    certifications: TEXT[]
+    timezone: VARCHAR
+    created_at: TIMESTAMP
+}
+
+table(clients) {
+    primary_key(id): SERIAL
+    foreign_key(user_id): VARCHAR
+    foreign_key(coach_id): INTEGER
+    goals: TEXT[]
+    preferences: JSONB
+    engagement_level: VARCHAR
+    last_session_date: TIMESTAMP
+    total_sessions: INTEGER
+    created_at: TIMESTAMP
+}
+
+table(feedback) {
+    primary_key(id): SERIAL
+    foreign_key(client_id): INTEGER
+    source: VARCHAR
+    content: TEXT
+    original_language: VARCHAR
+    translated_content: TEXT
+    sentiment: VARCHAR
+    sentiment_score: NUMERIC
+    is_anonymous: BOOLEAN
+    submitter_type: VARCHAR
+    voice_recording_url: TEXT
+    is_reviewed: BOOLEAN
+    reviewed_at: TIMESTAMP
+    coach_notes: TEXT
+    created_at: TIMESTAMP
+}
+
+table(practice_sessions) {
+    primary_key(id): SERIAL
+    foreign_key(client_id): INTEGER
+    scenario: VARCHAR
+    difficulty: INTEGER
+    duration: INTEGER
+    score: NUMERIC
+    skills_assessed: TEXT[]
+    conversation: JSONB
+    improvements: TEXT[]
+    completed_at: TIMESTAMP
+    created_at: TIMESTAMP
+}
+
+table(check_ins) {
+    primary_key(id): SERIAL
+    foreign_key(client_id): INTEGER
+    type: VARCHAR
+    prompt: TEXT
+    response: TEXT
+    mood: VARCHAR
+    goals: TEXT[]
+    completed_at: TIMESTAMP
+    created_at: TIMESTAMP
+}
+
+table(goals) {
+    primary_key(id): SERIAL
+    foreign_key(client_id): INTEGER
+    title: VARCHAR
+    description: TEXT
+    category: VARCHAR
+    target_date: TIMESTAMP
+    status: VARCHAR
+    progress: INTEGER
+    milestones: JSONB
+    created_at: TIMESTAMP
+    updated_at: TIMESTAMP
+}
+
+table(notifications) {
+    primary_key(id): SERIAL
+    foreign_key(coach_id): INTEGER
+    type: VARCHAR
+    title: VARCHAR
+    message: TEXT
+    priority: VARCHAR
+    is_read: BOOLEAN
+    foreign_key(related_client_id): INTEGER
+    created_at: TIMESTAMP
+}
+
+table(sessions) {
+    primary_key(sid): VARCHAR
+    sess: JSONB
+    expire: TIMESTAMP
+}
+
+' Relationships
+users "1" -- "0..1" coaches : has
+users "1" -- "0..1" clients : has
+coaches "1" -- "*" clients : manages
+clients "1" -- "*" feedback : receives
+clients "1" -- "*" practice_sessions : has
+clients "1" -- "*" check_ins : has
+clients "1" -- "*" goals : has
+coaches "1" -- "*" notifications : receives
+clients "0..1" -- "*" notifications : related_to
+
+@enduml 

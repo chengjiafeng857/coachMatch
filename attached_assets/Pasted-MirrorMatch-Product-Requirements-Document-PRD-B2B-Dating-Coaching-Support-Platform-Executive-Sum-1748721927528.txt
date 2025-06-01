@@ -1,0 +1,244 @@
+MirrorMatch Product Requirements Document (PRD)
+B2B Dating Coaching Support Platform
+Executive Summary
+MirrorMatch is a specialized B2B platform designed exclusively for dating and relationship coaches to enhance their client support capabilities. Unlike generic coaching platforms, MirrorMatch addresses the unique challenges dating coaches face: lack of client engagement between sessions, absence of dating-specific practice tools, and limited feedback collection systems for dating interactions.
+ 
+Market Problem & Opportunity
+Current Market Gaps
+Research shows that dating coaches face significant challenges that current technology doesn't address:
+1.	Client Engagement Crisis: 78% of clients struggle to maintain momentum between coaching sessions, leading to slower progress and higher dropout rates
+2.	Generic Tools: Existing coaching platforms (Paperbell, CoachVantage, UpCoach) focus on business management but lack dating-specific skill development features
+3.	Feedback Collection Gap: No systematic way for coaches to collect anonymous feedback from clients' real dating experiences
+4.	Practice Tool Shortage: Limited options for clients to practice dating skills in a safe, structured environment
+5.	Between-Session Support: Current platforms provide minimal support for maintaining client progress between sessions
+Target Market Size
+•	Dating Coaching Industry: $145,000 average annual revenue per coach, with 17% annual growth
+•	Coaching Technology Market: $7.31 billion by 2025, growing at 17% CAGR
+•	Primary Target: 10,000+ active dating coaches globally seeking specialized client support tools
+ 
+Product Vision & Positioning
+Core Value Proposition
+"MirrorMatch empowers dating coaches to deliver transformational client outcomes through specialized feedback collection, AI-powered practice sessions, and between-session engagement tools designed specifically for dating skill development."
+Product Positioning
+•	NOT a dating app - B2B coaching support platform only
+•	NOT generic coaching software - Purpose-built for dating/relationship coaching
+•	Integration-focused - Designed to complement existing coaching businesses and workflows
+ 
+Target Users & Use Cases
+Primary User: Dating Coaches
+Profile:
+•	Professional dating/relationship coaches with 5-50 active clients
+•	Seeking to improve client outcomes and differentiate their services
+•	Currently using generic coaching platforms or manual methods
+•	Annual revenue: $50K-$300K+ from coaching services
+Pain Points:
+•	Client Engagement: "My clients lose momentum between our weekly sessions"
+•	Practice Limitations: "I can't provide my clients with realistic practice opportunities"
+•	Feedback Collection: "I rely on client self-reporting, which is often incomplete or biased"
+•	Progress Tracking: "It's hard to measure improvement in real-world dating situations"
+•	Tool Integration: "Current platforms don't understand dating coaching workflows"
+Secondary User: Coaching Clients
+Profile:
+•	Individuals working with dating coaches
+•	Ages 25-45, primarily urban professionals
+•	Seeking to improve dating confidence and skills
+•	Tech-comfortable but need guided support
+ 
+Core Feature Requirements
+1. Anonymous Feedback Collection System
+Purpose: Enable coaches to gather honest, comprehensive feedback about their clients' dating experiences
+Key Features:
+•	Multi-source feedback: Collect input from dates, friends, family, colleagues
+•	Multilingual support: Accept feedback in 20+ languages via DeepL API integration
+•	Anonymous protection: Voice modulation and text anonymization to protect feedback provider identity
+•	Smart prompting: Guided questions that encourage constructive, specific feedback
+•	AI sentiment analysis: Automatic filtering of harmful or abusive content
+•	Coach dashboard: Organized feedback summaries with actionable insights
+Technical Implementation:
+•	Whisper API for voice-to-text conversion
+•	DeepL API for multilingual translation
+•	AssemblyAI for content moderation
+•	End-to-end encryption for all feedback data
+2. AI-Powered Practice Platform
+Purpose: Provide clients with safe, structured practice opportunities for dating scenarios
+Key Features:
+•	Scenario-based practice: Pre-built scenarios (first dates, difficult conversations, rejection handling)
+•	Personalized AI avatars: Adapts to individual client needs based on feedback patterns
+•	Real-time coaching: In-session tips and suggestions during practice
+•	Progress tracking: Measure improvement in specific communication skills
+•	Coach oversight: Dashboard for coaches to monitor client practice and assign specific scenarios
+Supported Practice Areas:
+•	Active listening and question-asking
+•	Expressing needs and boundaries
+•	Handling rejection gracefully
+•	Flirting and showing appropriate interest
+•	Conflict resolution and difficult conversations
+3. Between-Session Engagement Tools
+Purpose: Maintain client momentum and progress between coaching sessions
+Key Features:
+•	Automated check-ins: Customizable prompts sent via SMS/email
+•	Reflection journals: Guided prompts for client self-reflection
+•	Goal tracking: Visual progress indicators for dating-specific goals
+•	Resource library: Coach-curated content (articles, videos, exercises)
+•	Challenge assignments: Weekly micro-challenges to build confidence
+4. Coach Integration Dashboard
+Purpose: Seamless integration with coaches' existing workflows and business tools
+Key Features:
+•	Client progress overview: Consolidated view of feedback, practice activity, and goal progress
+•	Session preparation: AI-generated insights and talking points for upcoming sessions
+•	Communication tools: Integration with Voxer for voice messaging
+•	Calendar sync: Works with existing scheduling systems
+•	Report generation: Automated progress reports for client reviews
+ 
+Technical Architecture
+Platform Requirements
+•	Primary Platform: Lovable.ai for rapid prototype development
+•	Frontend: React/Vite with mobile-responsive design
+•	Backend: Supabase for data management and real-time features
+•	Hosting: Cloud-based with regional data storage for compliance
+Key Integrations
+1.	Whisper API: Voice-to-text conversion (supports 99+ languages)
+2.	DeepL API: Real-time translation for multilingual feedback
+3.	AssemblyAI: Content moderation and sentiment analysis
+4.	Voxer Integration: Voice messaging for coach-client communication
+5.	Calendar APIs: Google Calendar, Outlook integration
+6.	Zapier: Workflow automation with existing coaching tools
+Security & Privacy
+•	GDPR Compliance: Full data sovereignty and user consent management
+•	End-to-end encryption: All sensitive communications and feedback
+•	Data residency: Regional storage based on user location
+•	User control: Complete data export and deletion capabilities
+ 
+User Experience Design
+Coach Workflow
+1.	Client Onboarding: Add new clients to platform with initial assessment
+2.	Feedback Setup: Configure feedback collection preferences and sources
+3.	Practice Assignment: Assign specific practice scenarios based on client needs
+4.	Progress Monitoring: Review dashboard insights and prepare for sessions
+5.	Integration: Sync with existing tools (Voxer, calendar, CRM)
+Client Experience
+1.	Welcome & Setup: Guided onboarding with coach involvement
+2.	Feedback Requests: Simple process to invite feedback from dating experiences
+3.	Practice Sessions: Engaging AI conversations with real-time coaching
+4.	Progress Tracking: Visual indicators of skill development
+5.	Check-ins: Regular prompts to maintain engagement between sessions
+Interface Design Principles
+•	Clean, professional aesthetics that build trust
+•	Mobile-first design for on-the-go access
+•	Intuitive navigation requiring minimal training
+•	Coach branding options to maintain professional identity
+•	Accessibility compliance for inclusive design
+ 
+Core Interface Architecture
+1. Global Navigation (Bottom Tab Bar)
+Components:
+•	Home Icon: Returns to main dashboard with feedback overview
+•	Practice Icon: Direct access to AI avatar sessions
+•	Progress Icon: Visual skill development timeline & metrics
+•	Coach Icon: Dedicated portal for coaching interactions
+•	Profile Icon: Account settings & privacy controls
+Design Rules:
+•	44x44px touch targets with 8px spacing between icons
+•	Active tab highlighted with brand blue (#2A5C8D)
+•	Persistent across all screens except full-screen avatar practice
+________________________________________
+Key Screens & Interactions
+1. Coach Dashboard (Primary Hub)
+Layout:
+•	Header: Welcome message + quick stats (Active Clients, Feedback Received)
+•	Left Panel (30% width):
+•	Client list with search bar
+•	Filter by engagement level (High/Medium/Low)
+•	Main Area (70% width):
+•	Feedback Matrix: Color-coded grid showing client progress (Green=Improving, Yellow=Needs Attention)
+•	Priority Alerts: Red badges flag urgent client issues
+Critical Interactions:
+•	Click client name → Detailed progress report
+•	Hover feedback cell → Tooltip shows latest coach notes
+•	Drag-and-drop to reorder client priority
+________________________________________
+2. Feedback Collection Flow
+Step 1: Initiate Request
+•	Floating "+" button → "Request Feedback" modal
+•	Options: Recent Dates (last 7 days), Friends, Family, Custom Contacts
+Step 2: Customize Prompt
+•	Pre-built templates:
+•	"What strengths did you notice?"
+•	"What could improve the experience?"
+•	Optional voice recording toggle
+Step 3: Delivery Preview
+•	Simulated recipient view with anonymity assurance
+•	"Send Now" vs "Schedule for [date/time]" options
+________________________________________
+3. AI Avatar Practice Interface
+Scenario Setup:
+•	Skill Selector: Dropdown with 5 core competencies (Active Listening, Boundary Setting, etc.)
+•	Difficulty Slider: 1-5 scale (1=Guided Responses, 5=Unscripted)
+Session UI:
+•	Left (40%): Avatar video feed with real-time emotion detection
+•	Right (60%):
+•	Conversation transcript with highlighted improvement areas
+•	Quick Tools Bar:
+•	Pause/Reset buttons
+•	"Hint" lightbulb icon
+•	Session timer
+Post-Session Report:
+•	Percentage score + compared to last session
+•	"Practice This Again" vs "Try New Skill" CTAs
+________________________________________
+Component Library Specifications
+1. Input Elements
+•	Voice Feedback Button:
+•	Red recording dot animation during capture
+•	Auto-converts to text with language tag (e.g., "ES" for Spanish)
+•	Smart Text Field:
+•	Real-time sentiment analysis (😊/😐/😠 emoji feedback)
+•	500-character limit with dynamic counter
+2. Security & Trust Indicators
+•	Anonymity Badge: 🔒 icon + "All feedback anonymized" tooltip
+•	Data Consent Toggle:
+•	"Share with Coach" switch (default ON)
+•	"Allow Practice Session Analysis" (default OFF)
+________________________________________
+User Flows
+1. New Client Onboarding
+1.	Email invitation → Branded signup page
+2.	3-Step Profile Builder:
+•	Photo upload with AI validation (no sunglasses/hats)
+•	Core values selection (8 max)
+•	Coaching goals ranking
+3.	Automated match with practice scenarios
+2. Feedback Review Process
+1.	Notification badge → Feedback inbox
+2.	Card view with:
+•	Source type icon (Date/Friend/Coach)
+•	Sentiment color border
+•	Quick actions (Archive, Forward to Coach)
+3.	Click card → Expanded view with AI summary + raw data toggle
+________________________________________
+Technical Implementation Guide
+1. Lovable.ai Integration
+•	Prebuilt Templates:
+•	lc-feedback-card
+•	lc-avatar-chat
+•	lc-progress-wheel
+•	Custom CSS Overrides:
+•	Brand color variables
+•	Mobile-first media queries
+2. Performance Benchmarks
+•	Loading Times:
+•	Dashboard: <2s
+•	Avatar Session: <3s
+•	Error Rate: <0.5% failed API calls
+________________________________________
+Validation Metrics
+1.	Task Success Rate:
+•	95% users complete feedback request in <90s
+•	80% coaches find priority alerts "extremely helpful"
+2.	Engagement Targets:
+•	3+ weekly avatar sessions per active user
+•	65% feedback response rate
+3.	Accessibility Compliance:
+•	WCAG 2.1 AA standard
+•	Screen reader support for all core flows
+

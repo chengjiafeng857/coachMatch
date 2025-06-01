@@ -1,0 +1,10 @@
+-- Initialize database schema
+\i '01_users.sql'
+\i '02_coaches.sql'
+\i '03_clients.sql'
+\i '04_feedback.sql'
+\i '05_practice_sessions.sql'
+\i '06_check_ins.sql'
+\i '07_goals.sql'
+\i '08_notifications.sql'
+\i '09_sessions.sql' 
